@@ -1,0 +1,256 @@
+<html lang="zh" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>整理贴文工具</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/toastify.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <nav
+      class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg scrollbar"
+      id="sidebar">
+      <div class="container-fluid">
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
+          aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-brand d-inline-block py-lg-2 mb-lg-5 px-lg-6 me-0">
+          <img id="logo" src="/icon.png">
+          <span class="fs-5 ms-3 align-middle"><strong>贴文整理工具</strong></span>
+        </div>
+        <div class="navbar-user d-lg-none"></div>
+        <!-- 菜单 -->
+        <div class="collapse navbar-collapse" id="sidebarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="keyword-filter">
+                <i class="bi bi-robot"></i>
+                引导语分类
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="keyword-filter">
+                <i class="bi bi-robot"></i>
+                图片分类
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-image-fill"></i>
+                Reels 视频画面
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-camera-reels-fill"></i>
+                Reels 视频转文字
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-instagram"></i>
+                IG 帖子信息
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-tiktok"></i>
+                Tiktok 视频转文字
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-tiktok"></i>
+                拆解视频
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link menu py-2" id="data-query">
+                <i class="bi bi-gear-wide-connected"></i>
+                插件设置
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 右侧菜单 -->
+    <div class="flex-lg-1 h-screen overflow-y-lg-auto">
+      <!-- 引导语分类 -->
+      <main class="py-6 bg-surface-secondary" style="display: none;">
+        <div class="container-fluid">
+          <div class="card  mb-5">
+            <div class="card-header border-bottom">
+              <h5 class="mb-0  d-inline-block">引导语分类</h5>
+            </div>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                  <label class="mt-3 mb-1 h5">表格链接</label>
+                  <input class="form-control d-block w-100" id="text-sheet-url" value="">
+                </div>
+
+                <div class="d-flex gap-3 justify-content-center ">
+                  <div class="input-group mb-3 w-25 ">
+                    <span class="input-group-text">引导语列</span>
+                    <input type="text" class="form-control" id="category-content-column">
+                  </div>
+                  <div class="input-group mb-3 w-25 ">
+                    <span class="input-group-text">结果列</span>
+                    <input type="text" class="form-control" id="category-result-column">
+                  </div>
+                </div>
+                <button class="btn btn-primary w-100 mb-5" id="submit">开始</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- 图片分类 -->
+      <main class="py-6 bg-surface-secondary" style="display: none;">
+        <div class="container-fluid">
+          <div class="card  mb-5">
+            <div class="card-header border-bottom">
+              <h5 class="mb-0  d-inline-block">图片分类</h5>
+            </div>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                  <label class="mt-3 mb-1 h5">表格链接</label>
+                  <input class="form-control d-block w-100" id="image-sheet-url" value="">
+                </div>
+                <div class="d-flex gap-3 justify-content-center ">
+                  <div class="input-group mb-3 w-25 ">
+                    <span class="input-group-text">图片列</span>
+                    <input type="text" class="form-control" id="image-category-content-column">
+                  </div>
+                  <div class="input-group mb-3 w-25 ">
+                    <span class="input-group-text">结果列</span>
+                    <input type="text" class="form-control" id="image-category-result-column">
+                  </div>
+                </div>
+                <button class="btn btn-primary w-100 mb-5" id="submit-image">开始</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- 导数据界面 -->
+      <main style="display: none;">
+        <div class="mt-5 d-block text-center">
+          <span id="title" class="shadow-sm py-2 px-4 rounded-3 bg-white"></span>
+        </div>
+        <div class="container">
+          <div class="container-background row shadow">
+            <div class="side"><textarea id="input" name="message" placeholder="请输入内容，一行一个"></textarea></div>
+            <div class="center">
+              <div style="text-align: center;">
+                <button class="btn btn-primary btn-lg" id="start-btn">
+                  <i class="icon text-white bi-gear-fill" style="font-size:1.8rem;"></i>
+                  <span class="text">运行</span>
+                </button>
+                <button class="btn btn-success btn-lg my-3" id="copy">
+                  <i class="icon text-white bi-file-earmark-check-fill" style="font-size:1.8rem;"></i>
+                  <span class="text">复制</span>
+                </button>
+                <button class="btn btn-danger btn-lg" id="clean">
+                  <i class="icon text-white bi-trash-fill" style="font-size:1.8rem;"></i>
+                  <span class="text">清空</span>
+                </button>
+              </div>
+            </div>
+            <div class="side"><textarea id="output" name="message" placeholder="输出内容，不可编辑" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- 分析视频 -->
+      <main class="py-6 bg-surface-secondary" style="display: ;">
+        <div class="container-fluid">
+          <div class="card mb-5">
+            <div class="card-header border-bottom">
+              <h5 class="mb-0  d-inline-block">分析视频</h5>
+            </div>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                  <label class="mt-3 mb-1 h5">Reels 链接</label>
+                  <input class="form-control d-block w-100" id="reels-url" value="">
+                </div>
+                <button class="btn btn-primary w-100 mb-5" id="analyze-video">开始</button>
+                <div id="markdown-output" class="mt-4 mb-5 p-3 border rounded bg-light">
+                  <div id="markdown-body"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- 设置界面 -->
+      <main class="py-6 bg-surface-secondary" style="display: none;">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header border-bottom">
+              <h5 class="mb-0">插件设置</h5>
+            </div>
+            <div class="mt-5 mb-5 col-md-6 mx-auto text-center">
+              <div class="input-group mb-3">
+                <span class="input-group-text">API</span>
+                <input type="text" class="form-control" id="api-url">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Gladia API Key</span>
+                <input type="text" class="form-control" id="gladia-api-key">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="输入引导语类别，一行一个" id="category-list"
+                      style="height: 350px"></textarea>
+                    <label>引导语类别清单</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="输入图片类别，一行一个" id="image-category-list"
+                      style="height: 350px"></textarea>
+                    <label>图片类别清单</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/marked.umd.js"></script>
+  <script src="js/toastify.js" defer></script>
+  <script src="js/ui-manager.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/api/gemini.js" defer></script>
+  <script src="js/api/stt.js" defer></script>
+  <script src="js/api/translate.js" defer></script>
+  <script src="js/api/gyazo.js" defer></script>
+  <script src="js/func/classifierImage.js" defer></script>
+  <script src="js/func/classifierText.js" defer></script>
+  <script src="js/func/reelsThumbnail.js" defer></script>
+  <script src="js/func/reelsASR.js" defer></script>
+  <script src="js/func/instagramPostInfo.js" defer></script>
+  <script src="js/func/tiktokASR.js" defer></script>
+  <script src="js/func/analyzeVideo.js" defer></script>
+
+</body>
+
+</html>
