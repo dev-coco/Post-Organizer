@@ -43,7 +43,7 @@ submitImageBtn.addEventListener('click', async () => {
     notify('正在填表')
     const obj = {
       action: 'fill-sheet',
-      sheetUrl: textSheetUrl.value,
+      sheetUrl: imageSheetUrl.value,
       resultColumn: imageResultColumn.value,
       result
     }
